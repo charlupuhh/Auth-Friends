@@ -11,13 +11,15 @@ export function Login(props) {
     })
 
     const handleSubmit = () => {
-        axiosWithAuth().post('/api/login', form)
+        axios.post('http://localhost:5000/api/login', form)
         .then(res => {
             console.log(res)
             localStorage.setItem('token', res.data.payload)
             props.history.push('/friendslist')
         })
-        .catch(err => console.error('hey',err))
+        .catch(err => {
+            console.error(err)
+        })
 
 
     }
